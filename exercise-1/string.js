@@ -52,7 +52,7 @@ const prop_access = function (object, string) {
 const verlan = function (string) {
     if (typeof string !== "string")
         return "";
-    return string.split(" ").map(str => console.log(str.split("").reverse().join(""))).join(" ")
+    return string.split(" ").map(str => (str.split("").reverse().join(""))).join(" ")
 }
 
 const yoda = function (string) {
@@ -65,7 +65,6 @@ const vig = function (string) {
     if (typeof string !== "string")
         return "";
     let key = "crypto"
-    //    let key = "a"
     key = key.split("").map(char => char.charCodeAt(0) - 97)
     string = string.toLowerCase();
     let i = 0;
@@ -77,5 +76,3 @@ const vig = function (string) {
         }
     }).join("")
 }
-
-console.log(vig("wikipedia"));
