@@ -7,4 +7,4 @@ services:
     working_dir: '/home/node/app'
     ports:
       - '3000:3000'
-    command: 'npm install && npm start'
+    command: 'node intro/hello.mjs'
