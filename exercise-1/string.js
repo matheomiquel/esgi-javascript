@@ -1,30 +1,29 @@
 const ucfirst = function (string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
-    string = string.toLowerCase();
     return str = `${string[0].toUpperCase()}${string.slice(1)}`;
 }
 
 const capitalize = function (string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
     return (string.split(" ").map(str => ucfirst(str))).join(" ");
 }
 
 const camelCase = function (string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
     return (string.split(" ").map(str => ucfirst(str))).join("");
 }
 
 
 const snake_case = function (string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
     return (string.split(" ").map(str => ucfirst(str))).join("_");
 }
 const leet = function (string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
     const crypt = {
         a: '4',
@@ -40,7 +39,7 @@ const leet = function (string) {
     }).join("");
 }
 const prop_access = function (object, string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return object;
     const value = string.split('.').reduce((p, c) => {
         object = p === undefined ? object[c] : object[p]
@@ -50,19 +49,19 @@ const prop_access = function (object, string) {
 }
 
 const verlan = function (string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
     return string.split(" ").map(str => (str.split("").reverse().join(""))).join(" ")
 }
 
 const yoda = function (string) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
     return string.split(" ").reverse().join(" ")
 }
 
 const vig = function (string, key) {
-    if (typeof string !== "string")
+    if (typeof string !== "string" || !!string)
         return "";
     key = key.toLowerCase();
     key = key.split("").map(char => char.charCodeAt(0) - 97)
