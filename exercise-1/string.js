@@ -31,7 +31,7 @@ const leet = function (string) {
         e: '3',
         i: '1',
         o: '0',
-        u: '_',
+        u: '(_)',
         y: '7'
     }
     return string.split("").map(char => {
@@ -61,10 +61,10 @@ const yoda = function (string) {
     return string.split(" ").reverse().join(" ")
 }
 
-const vig = function (string) {
+const vig = function (string, key) {
     if (typeof string !== "string")
         return "";
-    let key = "crypto"
+    key = key.toLowerCase();
     key = key.split("").map(char => char.charCodeAt(0) - 97)
     string = string.toLowerCase();
     let i = 0;
