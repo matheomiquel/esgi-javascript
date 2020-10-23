@@ -40,14 +40,25 @@ const leet = function (string) {
 }
 
 const prop_access = function (object, string) {
-    if (typeof string !== "string" || !!string)
+
+    if (typeof string !== "string" || !string)
         return object;
+
     const value = string.split('.').reduce((p, c) => {
-        object = p === undefined ? object[c] : object[p]
+        if (object[p])
+            object = p === undefined ? object[c] : object[p]
         return c
     });
     return object[value] === undefined ? `${string} not exist` : object[value]
 }
+const data = {
+    a: {
+        b: {
+            c: 'd'
+        }
+    }
+}
+console.log(prop_access(data, 'a.b.c.d.e.f.g'))
 
 const verlan = function (string) {
     if (typeof string !== "string" || !!string)
@@ -76,5 +87,3 @@ const vig = function (string, key) {
         }
     }).join("")
 }
-
-console.log(vig("wiikipedia", "crypto"))
