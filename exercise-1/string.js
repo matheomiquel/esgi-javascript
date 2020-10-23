@@ -41,7 +41,7 @@ const leet = function (string) {
 
 const prop_access = function (object, string) {
 
-    if (typeof string !== "string" || !string)
+    if (typeof string !== "string" || !string || !object)
         return object;
 
     const value = string.split('.').reduce((p, c) => {
@@ -49,16 +49,16 @@ const prop_access = function (object, string) {
             object = p === undefined ? object[c] : object[p]
         return c
     });
-    return object[value] === undefined ? `${string} not exist` : object[value]
+    return object[value] === undefined || object[value] === null ? `${string} not exist` : object[value]
 }
 const data = {
     a: {
         b: {
-            c: 'd'
+            c: null
         }
     }
 }
-console.log(prop_access(data, 'a.b.c.d.e.f.g'))
+console.log(prop_access(null, 'a.b.c'))
 
 const verlan = function (string) {
     if (typeof string !== "string" || !!string)
