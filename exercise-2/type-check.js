@@ -1,13 +1,24 @@
 const type_check_v1 = function (arg, type) {
-//    console.log(arg)
-    if (arg || arg === null)
-        if ((Array.isArray(arg) && type === "array") || (arg === null && type === "null") ||
-            (arg === undefined && type === "undefined") || typeof arg === type)
-            return true
-    return false
+    const variable = typeof arg
+    switch (variable) {
+        case "object": {
+            switch (type) {
+                case "null":
+                    return arg === null
+                case "array":
+                    return Array.isArray(arg)
+                case "object":
+                    return arg !== null && !Array.isArray(arg)
+                default:
+                    return false
+
+            }
+        }
+        default:
+            return variable === type
+    }
 }
-console.log(type_check_v1(function () {}, "function"))
-//console.log(typeof function(){} === "function")
+console.log(type_check_v1(null, "object"))
 const type_check_v2 = function (arg, data) {
     if ((data.type && !type_check_v1(arg, data.type)) || (data.value && arg != data.value) || (data.enum && !data.enum.includes(arg)))
         return false;
