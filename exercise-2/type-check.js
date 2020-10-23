@@ -1,9 +1,13 @@
 const type_check_v1 = function (arg, type) {
-    return typeof arg === type
+    if (arg || arg === null)
+        if ((Array.isArray(arg) && type === "array") || (arg === null && type === "null") || typeof arg === type)
+            return true
+    return false
 }
 
+
 const type_check_v2 = function (arg, data) {
-    if ((data.type && typeof arg !== data.type) || (data.value && arg != data.value) || (data.enum && !data.enum.includes(arg)))
+    if ((data.type && !type_check_v1(arg, data.type)) || (data.value && arg != data.value) || (data.enum && !data.enum.includes(arg)))
         return false;
     return true
 }
@@ -32,7 +36,7 @@ const data = {
             type: "object",
             properties: {
                 prop1: {
-                    type: "string",
+                    type: "number",
 
                 },
             }
@@ -51,3 +55,6 @@ const test = {
     prop2: "test",
 
 }
+
+
+console.log(type_check(test, data))

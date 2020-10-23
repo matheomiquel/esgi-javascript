@@ -7,13 +7,13 @@ const ucfirst = function (string) {
 const capitalize = function (string) {
     if (typeof string !== "string" || !!string)
         return "";
-    return (string.split(" ").map(str => ucfirst(str))).join(" ");
+    return (string.toLowerCase.split(" ").map(str => ucfirst(str))).join(" ");
 }
 
 const camelCase = function (string) {
     if (typeof string !== "string" || !!string)
         return "";
-    return (string.split(" ").map(str => ucfirst(str))).join("");
+    return (string.toLowerCase.split(" ").map(str => ucfirst(str))).join("");
 }
 
 
@@ -38,6 +38,7 @@ const leet = function (string) {
         return index >= 0 ? Object.values(crypt)[index] : char;
     }).join("");
 }
+
 const prop_access = function (object, string) {
     if (typeof string !== "string" || !!string)
         return object;
@@ -61,7 +62,7 @@ const yoda = function (string) {
 }
 
 const vig = function (string, key) {
-    if (typeof string !== "string" || !!string)
+    if (typeof string !== "string" || !string)
         return "";
     key = key.toLowerCase();
     key = key.split("").map(char => char.charCodeAt(0) - 97)
@@ -75,3 +76,5 @@ const vig = function (string, key) {
         }
     }).join("")
 }
+
+console.log(vig("wiikipedia", "crypto"))
